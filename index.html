@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abflussnotdienst24-7 | Dinkelsbühl & Umgebung bis 100km</title>
+    <meta name="description" content="Verstopfter Abfluss? Wir sind in 30 Minuten bei Ihnen! Professioneller Abflussnotdienst in Dinkelsbühl & Umgebung mit Festpreisgarantie. 24/7 erreichbar ohne Wochenendaufschlag.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables */
+        :root {
+            --primary-color: #0066CC;
+            --primary-dark: #004c99;
+            --primary-light: #4d94ff;
+            --primary-gradient: linear-gradient(135deg, #0066CC, #004C99);
+            --accent-color: #ff9500;
+            --accent-dark: #cc7a00;
+            --text-color: #333;
+            --text-light: #666;
+            --background-color: #fff;
+            --background-light: #f5f5f7;
+            --card-background: #fff;
+            --footer-background: #1d1d1f;
+            --footer-text: #999;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.16);
+            --transition: 0.3s ease;
+            --border-radius: 8px;
+            --border-radius-lg: 16px;
+            --max-width: 1280px;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+        
+        .dark-mode {
+            --primary-color: #0077ED;
+            --primary-dark: #005bb8;
+            --primary-light: #4d9eff;
+            --primary-gradient: linear-gradient(135deg, #0077ED, #0055CC);
+            --accent-color: #FF9F0A;
+            --accent-dark: #cc7a00;
+            --text-color: #f5f5f7;
+            --text-light: #a1a1a6;
+            --background-color: #000;
+            --background-light: #1d1d1f;
+            --card-background: #1d1d1f;
+            --footer-background: #1d1d1f;
+            --footer-text: #86868b;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.25);
+            --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-sans);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.5s, color 0.5s, transform 0.3s;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--background-color);
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Utility Classes */
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 24px;
+        }
+        
+        .dark-mode .navbar {
+            background-color: rgba(29, 29, 31, 0.8);
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo i {
+            font-size: 26px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all var(--transition);
+            position: relative;
+            opacity: 0.85;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .emergency-phone {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 24px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all var(--transition);
+            animation: pulse 2s infinite;
+            white-space: nowrap;
+        }
+        
+        .emergency-phone:hover {
+            transform: scale(1.05);
+            background-color: var(--primary-dark);
+            color: white;
+        }
+        
+        .emergency-phone i {
+            font-size: 16px;
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-color);
+            padding: 8px;
+            border-radius: 50%;
+            font-size: 18px;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 24px;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--background-color);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 24px;
+        }
+        
+        .mobile-menu a {
+            font-size: 24px;
+            margin: 16px 0;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .mobile-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 160px 24px 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            animation: fadeInUp 1s 0.2s forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .hero h1 span {
+            color: var(--accent-color);
+        }
+        
+        .hero p {
+            font-size: 22px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 0.4s forwards;
+        }
+        
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 0.3s forwards;
+        }
+        
+        .hero-badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px 16px;
+            border-radius: 24px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+        }
+        
+        .hero-badge i {
+            font-size: 16px;
+        }
+        
+        .emergency-number {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 32px;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 0.5s forwards;
+        }
+        
+        .emergency-number a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .emergency-number a:hover {
+            color: var(--accent-dark);
+        }
+        
+        .emergency-number i {
+            animation: shake 3s infinite;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 0.6s forwards;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition);
+            box-shadow: var(--shadow-md);
+            min-width: 180px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            color: var(--primary-color);
+        }
+        
+        .cta-button.primary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .cta-button.primary:hover {
+            background-color: var(--accent-dark);
+            color: white;
+        }
+        
+        .cta-button.secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-button.secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .water-animation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,154.7C960,149,1056,171,1152,186.7C1248,203,1344,213,1392,218.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            z-index: 4;
+        }
+        
+        .dark-mode .water-animation {
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23000000' fill-opacity='1' d='M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,154.7C960,149,1056,171,1152,186.7C1248,203,1344,213,1392,218.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+        }
+        
+        .hero-bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 3;
+        }
+        
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .bubble:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            left: 10%;
+            animation-duration: 8s;
+        }
+        
+        .bubble:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            right: 15%;
+            animation-duration: 10s;
+            animation-delay: 1s;
+        }
+        
+        .bubble:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            left: 30%;
+            top: 60%;
+            animation-duration: 6s;
+            animation-delay: 2s;
+        }
+        
+        .bubble:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            right: 30%;
+            top: 30%;
+            animation-duration: 12s;
+            animation-delay: 3s;
+        }
+        
+        .bubble:nth-child(5) {
+            width: 60px;
+            height: 60px;
+            left: 50%;
+            animation-duration: 9s;
+            animation-delay: 0.5s;
+        }
+
+        /* Trust Badges Section */
+        .trust-badges {
+            padding: 32px 24px;
+            background-color: var(--background-color);
+            position: relative;
+            z-index: 5;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .dark-mode .trust-badges {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .trust-badge-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        
+        .trust-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .trust-badge:hover {
+            transform: translateY(-5px);
+        }
+        
+        .trust-badge i {
+            font-size: 28px;
+            color: var(--primary-color);
+        }
+        
+        .trust-badge span {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 24px;
+            background-color: var(--background-color);
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+            font-weight: 700;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gradient);
+            margin: 16px auto;
+            border-radius: 4px;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 48px;
+        }
+        
+        .service-tabs {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 60px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .service-tab {
+            padding: 14px 28px;
+            border: none;
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--text-light);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-tab:first-child {
+            border-top-left-radius: var(--border-radius);
+            border-bottom-left-radius: var(--border-radius);
+        }
+        
+        .service-tab:last-child {
+            border-top-right-radius: var(--border-radius);
+            border-bottom-right-radius: var(--border-radius);
+        }
+        
+        .service-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .service-tab:not(.active):hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark-mode .service-tab {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .dark-mode .service-tab:not(.active):hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .service-content {
+            display: none;
+            animation: fadeIn 0.5s forwards;
+        }
+        
+        .service-content.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        
+        .service-image {
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: all var(--transition);
+            position: relative;
+        }
+        
+        .service-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all var(--transition);
+        }
+        
+        .service-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .service-details h3 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        
+        .service-details h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+        
+        .service-details p {
+            margin-bottom: 32px;
+            color: var(--text-light);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+        
+        .service-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .service-feature i {
+            color: var(--primary-color);
+            font-size: 22px;
+            margin-top: 2px;
+        }
+        
+        .service-feature-text h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        
+        .service-feature-text p {
+            margin-bottom: 0;
+            font-size: 16px;
+            color: var(--text-light);
+        }
+        
+        .service-price {
+            font-size: 28px;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 32px;
+            display: inline-block;
+            background-color: rgba(0, 102, 204, 0.1);
+            padding: 16px 28px;
+            border-radius: var(--border-radius);
+        }
+
+        /* Team Section */
+        .team {
+            padding: 100px 24px;
+            background-color: var(--background-light);
+            position: relative;
+        }
+        
+        .team-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .team-member {
+            background-color: var(--card-background);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition);
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .team-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-member:hover .team-image img {
+            transform: scale(1.05);
+        }
+        
+        .team-info {
+            padding: 24px;
+        }
+        
+        .team-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .team-role {
+            color: var(--text-light);
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
+        
+        .team-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        
+        .team-contact a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px;
+            background-color: var(--background-light);
+            border-radius: var(--border-radius);
+            transition: all var(--transition);
+            font-weight: 500;
+        }
+        
+        .dark-mode .team-contact a {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .team-contact a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Location Section */
+        .location {
+            padding: 100px 24px;
+            background-color: var(--background-color);
+            position: relative;
+        }
+        
+        .location-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .location-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 32px;
+        }
+        
+        .location-highlight {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 32px 0;
+            padding: 20px;
+            background-color: rgba(0, 102, 204, 0.1);
+            border-radius: var(--border-radius);
+            display: inline-block;
+        }
+        
+        .location-map {
+            margin-top: 48px;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            height: 400px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 24px;
+            background-color: var(--background-light);
+            position: relative;
+        }
+        
+        .contact-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+        
+        .contact-info {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .contact-info h2 {
+            font-size: 36px;
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        
+        .contact-info h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 32px;
+            font-size: 17px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        .contact-methods {
+            margin-bottom: 40px;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding: 20px;
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+        }
+        
+        .contact-method:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .contact-method i {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-top: 2px;
+        }
+        
+        .contact-method-text h4 {
+            font-size: 18px;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .contact-method-text p, .contact-method-text a {
+            color: var(--text-light);
+            margin-bottom: 0;
+            font-size: 16px;
+            transition: color var(--transition);
+        }
+        
+        .contact-method-text a:hover {
+            color: var(--primary-color);
+        }
+        
+        .business-hours {
+            margin-top: 48px;
+        }
+        
+        .business-hours h3 {
+            font-size: 22px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .business-hour {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+            transition: all var(--transition);
+        }
+        
+        .business-hour:hover {
+            background-color: rgba(0, 102, 204, 0.05);
+        }
+        
+        .dark-mode .business-hour {
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+        
+        .dark-mode .business-hour:hover {
+            background-color: rgba(0, 119, 237, 0.1);
+        }
+        
+        .business-hour:last-child {
+            border-bottom: none;
+        }
+        
+        .business-day {
+            font-weight: 600;
+        }
+        
+        .business-time {
+            color: var(--text-light);
+        }
+        
+        .business-time.highlight {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .contact-form {
+            background-color: var(--card-background);
+            border-radius: var(--border-radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .contact-form h3 {
+            font-size: 24px;
+            margin-bottom: 32px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-size: 16px;
+            transition: all var(--transition);
+            font-family: var(--font-sans);
+        }
+        
+        .dark-mode .form-input {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: var(--background-light);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.2);
+        }
+        
+        .form-textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .form-button {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: var(--border-radius);
+            background: var(--primary-gradient);
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+        
+        .form-button:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 24px;
+            background: var(--primary-gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 36px;
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+        
+        .cta-content p {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .cta-bg-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,160L48,160C96,160,192,160,288,186.7C384,213,480,267,576,272C672,277,768,235,864,197.3C960,160,1056,128,1152,138.7C1248,149,1344,203,1392,229.3L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--footer-background);
+            color: white;
+            padding: 80px 24px 40px;
+            position: relative;
+        }
+        
+        .footer-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 64px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-gradient);
+            border-radius: 1.5px;
+        }
+        
+        .footer-about p {
+            color: var(--footer-text);
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all var(--transition);
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: color var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-links i {
+            font-size: 14px;
+        }
+        
+        .footer-contact p {
+            color: var(--footer-text);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            font-size: 15px;
+        }
+        
+        .footer-contact i {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-top: 4px;
+        }
+        
+        .footer-contact a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        
+        .footer-contact a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        
+        .footer-bottom-left {
+            color: var(--footer-text);
+            font-size: 14px;
+        }
+        
+        .footer-bottom-right {
+            display: flex;
+            gap: 24px;
+        }
+        
+        .footer-bottom-right a {
+            color: var(--footer-text);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color var(--transition);
+        }
+        
+        .footer-bottom-right a:hover {
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(0, 102, 204, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(0, 102, 204, 0);
+            }
+        }
+        
+        @keyframes shake {
+            0%, 100% {
+                transform: rotate(0);
+            }
+            20% {
+                transform: rotate(8deg);
+            }
+            40% {
+                transform: rotate(-8deg);
+            }
+            60% {
+                transform: rotate(8deg);
+            }
+            80% {
+                transform: rotate(-8deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .service-content.active,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            
+            .service-image {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 38px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .emergency-number {
+                font-size: 32px;
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .service-details h3,
+            .contact-info h2,
+            .cta-content h2 {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 16px;
+            }
+            
+            .hero {
+                padding: 140px 16px 100px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .hero-badges {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .service-tab {
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .service-details h3,
+            .contact-info h2,
+            .cta-content h2 {
+                font-size: 24px;
+            }
+            
+            .contact-form {
+                padding: 24px 20px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#" class="active">Startseite</a>
+        <a href="#services">Leistungen</a>
+        <a href="#team">Team</a>
+        <a href="#location">Einsatzgebiet</a>
+        <a href="#contact">Kontakt</a>
+        <a href="tel:01609631694" class="emergency-phone">
+            <i class="fas fa-phone-alt"></i>
+            Notdienst anrufen
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">
+            <i class="fas fa-tint"></i>
+            Abflussnotdienst24-7
+        </a>
+        <div class="nav-links">
+            <a href="#" class="active">Startseite</a>
+            <a href="#services">Leistungen</a>
+            <a href="#team">Team</a>
+            <a href="#location">Einsatzgebiet</a>
+            <a href="#contact">Kontakt</a>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        <a href="tel:01609631694" class="emergency-phone">
+            <i class="fas fa-phone-alt"></i>
+            Notdienst 24/7
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bubbles">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
+        <div class="water-animation"></div>
+        <div class="hero-content">
+            <h1>Verstopfter Abfluss? <span>Wir sind sofort zur Stelle!</span></h1>
+            <p>Professionelle Rohrreinigung vom Anlagenmechaniker-Meister mit modernster Technik. In 30 Minuten bei Ihnen - rund um die Uhr, auch am Wochenende ohne Aufpreis.</p>
+            
+            <div class="hero-badges">
+                <div class="hero-badge">
+                    <i class="fas fa-stopwatch"></i>
+                    30 Min. Reaktionszeit
+                </div>
+                <div class="hero-badge">
+                    <i class="fas fa-calendar-check"></i>
+                    24/7 ohne Aufpreis
+                </div>
+                <div class="hero-badge">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    Festpreisgarantie
+                </div>
+                <div class="hero-badge">
+                    <i class="fas fa-certificate"></i>
+                    Meisterbetrieb
+                </div>
+            </div>
+            
+            <div class="emergency-number">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:01609631694">0160 963 169 41</a>
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="tel:01609631694" class="cta-button primary">
+                    <i class="fas fa-phone-alt"></i>
+                    Jetzt anrufen
+                </a>
+                <a href="#services" class="cta-button secondary">
+                    <i class="fas fa-info-circle"></i>
+                    Unsere Leistungen
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="trust-badges">
+        <div class="trust-badge-container">
+            <div class="trust-badge">
+                <i class="fas fa-star"></i>
+                <span>5-Sterne Service</span>
+            </div>
+            <div class="trust-badge">
+                <i class="fas fa-tools"></i>
+                <span>Modernste Technik</span>
+            </div>
+            <div class="trust-badge">
+                <i class="fas fa-shield-alt"></i>
+                <span>Garantierte Lösung</span>
+            </div>
+            <div class="trust-badge">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Schnell & Zuverlässig</span>
+            </div>
+            <div class="trust-badge">
+                <i class="fas fa-check-circle"></i>
+                <span>Transparente Preise</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title reveal">Unsere Leistungen</h2>
+            <p class="section-subtitle reveal">Vom verstopften Waschbecken bis zur kompletten Sanitärinstallation - wir sind Ihr kompetenter Ansprechpartner für alle Abflussprobleme.</p>
+            
+            <div class="service-tabs reveal">
+                <button class="service-tab active" data-service="notdienst">Notdienst</button>
+                <button class="service-tab" data-service="rohrreinigung">Rohrreinigung</button>
+                <button class="service-tab" data-service="sanitaer">Sanitärinstallation</button>
+                <button class="service-tab" data-service="kamera">Kamera-Inspektion</button>
+            </div>
+            
+            <div class="service-content active" id="notdienst">
+                <div class="service-image reveal">
+                    <img src="/api/placeholder/600/400" alt="Abflussnotdienst im Einsatz">
+                </div>
+                <div class="service-details reveal">
+                    <h3>24/7 Notdienst</h3>
+                    <p>Wenn das Wasser nicht mehr abläuft und Sie schnelle Hilfe benötigen, sind wir rund um die Uhr für Sie da. Unser Notdienst ist 365 Tage im Jahr verfügbar - auch nachts, an Wochenenden und Feiertagen, ohne zusätzliche Kosten!</p>
+                    
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-bolt"></i>
+                            <div class="service-feature-text">
+                                <h4>Express-Anfahrt innerhalb von 30 Minuten</h4>
+                                <p>Wir verstehen, dass Abflussprobleme nicht warten können. Deshalb sind wir schnell bei Ihnen.</p>
+                            </div>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-tools"></i>
+                            <div class="service-feature-text">
+                                <h4>Sofortige Problemlösung</h4>
+                                <p>Mit unserem Spezialwerkzeug beheben wir fast jede Verstopfung direkt vor Ort.</p>
+                            </div>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <div class="service-feature-text">
+                                <h4>Garantierte Zufriedenheit</h4>
+                                <p>Wir arbeiten so lange, bis Ihr Problem gelöst ist - dafür stehen wir mit unserem Namen.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-price">Ab 99,- € für Notdiensteinsätze</div>
+                    
+                    <a href="tel:01609631694" class="cta-button primary">
+                        <i class="fas fa-phone-alt"></i>
+                        Notdienst rufen
+                    </a>
+                </div>
+            </div>
+            
+            <div class="service-content" id="rohrreinigung">
+                <div class="service-image">
+                    <img src="/api/placeholder/600/400" alt="Professionelle Rohrreinigung">
+                </div>
+                <div class="service-details">
+                    <h3>Professionelle Rohrreinigung</h3>
+                    <p>Mit modernster Technik und jahrelanger Erfahrung beseitigen wir zuverlässig jede Art von Verstopfung in Ihren Abflüssen und Rohren. Egal ob Küche, Bad, Toilette oder Hauptabwasserleitung - wir haben die richtige Lösung.</p>
+                    
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-sync-alt"></i>
+                            <div class="service-feature-text">
+                                <h4>Hochdruck-Rohrreinigung</h4>
+                                <p>Beseitigt selbst hartnäckige Verstopfungen und Ablagerungen gründlich und schonend.</p>
+                            </div>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-cog"></i>
+                            <div class="service-feature-text">
+                                <h4>Spiralreinigung</h4>
+                                <p>Ideal für das Entfernen von festen Blockaden und Wurzeleinwuchs.</p>
+                            </div>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-tint-slash"></i>
+                            <div class="service-feature-text">
+                                <h4>Vorbeugender Schutz</h4>
+                                <p>Regelmäßige Reinigung verhindert neue Verstopfungen und teure Folgeschäden.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-price">Ab 79,- € für Standardreinigung</div>
+                    
+                    <a href="tel:01609631694" class="cta-button primary">
+                        <i class="fas fa-phone-alt"></i>
+                        Termin vereinbaren
+                    </a>
+                </div>
+            </div>
+            
+            <div class="service-content" id="sanitaer">
+                <div class="service-image">
+                    <img src="/api/placeholder/600/400" alt="Sanitärinstallation Dinkelsbühl">
+                </div>
+                <div class="service-details">
+                    <h3>Sanitärinstallation & Reparatur</h3>
+                    <p>Als erfahrene Anlagenmechaniker bieten wir Ihnen sämtliche Sanitärarbeiten aus einer Hand. Von kleinen Reparaturen bis hin zur kompletten Neuinstallation - wir realisieren Ihre Wünsche fachgerecht und zuverlässig.</p>
+                    
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-wrench"></i>
+                            <div class="service-feature-text">
+                                <h4>Reparatur & Wartung</h4>
+                                <p>Schnelle und zuverlässige Behebung von Sanitärproblemen aller Art.</p>
+                            </div>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-shower"></i>
+                            <div class="service-feature-text">
+                                <h4>Neuinstallation</h4>
+                                <p>Fachgerechte Installation von Waschbecken, Toiletten, Duschen und mehr.</p>
+                            </div>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-faucet"></i>
+                            <div class="service-feature-text">
+                                <h4>Modernisierung</h4>
+                                <p>Bringen Sie Ihr Badezimmer auf den neuesten Stand der Technik.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-price">Individuelles Angebot nach Besichtigung</div>
+                    
+                    <a href="tel:01609631694" class="cta-button primary">
+                        <i class="fas fa-phone-alt"></i>
+                        Beratung anfordern
+                    </a>
+                </div>
+            </div>
+            
+            <div class="service-content" id="kamera">
+                <div class="service-image">
+                    <img src="/api/placeholder/600/400" alt="Kamera-Inspektion für Rohre">
+                </div>
+                <div class="service-details">
+                    <h3>Professionelle Kamera-Inspektion</h3>
+                    <p>Mit unserer hochauflösenden Rohrkamera können wir den Zustand Ihrer Rohre genau begutachten und Schäden präzise lokalisieren - ohne aufwändige Bauarbeiten. Die digitale Dokumentation gibt Ihnen Sicherheit und Transparenz.</p>
+                    
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-camera"></i>
+                            <div class="service-feature-text">
+                                <h4>Präzise Schadensanalyse</h4>
+                                <p>Erkennen von Rissen, Brüchen, Wurzeleinwuchs und anderen Schäden.</p>
+                            </div>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-search-location"></i>
+                            <div class="service-feature-text">
+                                <h4>Exakte Ortung</h4>
+                                <p>Zentimetergenaue Lokalisierung des Problems ohne unnötige Grabungen.</p>
+                            </div>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-file-video"></i>
+                            <div class="service-feature-text">
+                                <h4>Digitale Dokumentation</h4>
+                                <p>Auf Wunsch erhalten Sie Aufnahmen für Ihre Unterlagen oder Versicherung.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-price">Ab 129,- € inkl. Protokoll</div>
+                    
+                    <a href="tel:01609631694" class="cta-button primary">
+                        <i class="fas fa-phone-alt"></i>
+                        Inspektion buchen
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="team-container">
+            <h2 class="section-title reveal">Ihr Expertenteam</h2>
+            <p class="section-subtitle reveal">Lernen Sie die Profis kennen, die Ihnen bei allen Abflussproblemen kompetent zur Seite stehen. Jeder von uns ist ein Spezialist auf seinem Gebiet.</p>
+            
+            <div class="team-grid">
+                <div class="team-member reveal">
+                    <div class="team-image">
+                        <img src="/api/placeholder/400/400" alt="Samet Erdogan">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Samet Erdogan</h3>
+                        <p class="team-role">Anlagenmechaniker-Meister</p>
+                        <div class="team-contact">
+                            <a href="tel:01609631694">
+                                <i class="fas fa-phone-alt"></i>
+                                0160 9631 6941
+                            </a>
+                            <a href="mailto:samete@web.de">
+                                <i class="fas fa-envelope"></i>
+                                samete@web.de
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member reveal">
+                    <div class="team-image">
+                        <img src="/api/placeholder/400/400" alt="Leon Buckel">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Leon Buckel</h3>
+                        <p class="team-role">Anlagenmechaniker</p>
+                        <div class="team-contact">
+                            <a href="tel:015170595731">
+                                <i class="fas fa-phone-alt"></i>
+                                0151 7059 5731
+                            </a>
+                            <a href="mailto:samete@web.de">
+                                <i class="fas fa-envelope"></i>
+                                samete@web.de
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location">
+        <div class="location-container">
+            <h2 class="section-title reveal">Unser Einsatzgebiet</h2>
+            <p class="location-subtitle reveal">Wir sind für Sie in Dinkelsbühl und im Umkreis von 100 km schnell und zuverlässig im Einsatz.</p>
+            
+            <div class="location-highlight reveal">
+                Dinkelsbühl und Umgebung bis 100 km
+            </div>
+            
+            <p class="location-subtitle reveal">
+                Unser Servicegebiet umfasst neben Dinkelsbühl auch Ansbach, Nördlingen, Feuchtwangen, Crailsheim, Rothenburg ob der Tauber, Ellwangen, Schwäbisch Hall, Aalen und viele weitere Orte in der Region.
+            </p>
+            
+            <div class="location-map reveal">
+                <!-- Dies würde normalerweise eine echte Karte sein -->
+                <img src="/api/placeholder/1200/400" alt="Karte des Einsatzgebiets">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="contact-info reveal">
+                <h2>Kontaktieren Sie uns</h2>
+                <p>Haben Sie Fragen oder benötigen Sie einen Termin? Kontaktieren Sie uns jederzeit - wir sind 24/7 für Sie erreichbar und helfen Ihnen gerne weiter.</p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="contact-method-text">
+                            <h4>Telefon (24/7 Notdienst)</h4>
+                            <p><a href="tel:01609631694">0160 963 169 41</a></p>
+                            <p><a href="tel:015170595731">0151 705 957 31</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-method-text">
+                            <h4>E-Mail</h4>
+                            <p><a href="mailto:samete@web.de">samete@web.de</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-method-text">
+                            <h4>Einsatzgebiet</h4>
+                            <p>Dinkelsbühl und Umgebung bis 100 km</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="business-hours">
+                    <h3>Geschäftszeiten</h3>
+                    <div class="business-hour">
+                        <span class="business-day">Montag - Freitag:</span>
+                        <span class="business-time">7:00 - 20:00 Uhr</span>
+                    </div>
+                    <div class="business-hour">
+                        <span class="business-day">Samstag:</span>
+                        <span class="business-time">8:00 - 18:00 Uhr</span>
+                    </div>
+                    <div class="business-hour">
+                        <span class="business-day">Sonn- & Feiertage:</span>
+                        <span class="business-time highlight">24/7 Notdienst</span>
+                    </div>
+                    <div class="business-hour">
+                        <span class="business-day">Notfälle:</span>
+                        <span class="business-time highlight">Rund um die Uhr</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form reveal">
+                <h3>Nachricht senden</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Name</label>
+                        <input type="text" class="form-input" id="name" placeholder="Ihr Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="email">E-Mail</label>
+                        <input type="email" class="form-input" id="email" placeholder="Ihre E-Mail-Adresse" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Telefon</label>
+                        <input type="tel" class="form-input" id="phone" placeholder="Ihre Telefonnummer" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="message">Nachricht</label>
+                        <textarea class="form-input form-textarea" id="message" placeholder="Wie können wir Ihnen helfen?" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-button">Nachricht senden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-bg-wave"></div>
+        <div class="cta-content">
+            <h2>Abflussprobleme? Wir lösen das!</h2>
+            <p>Egal ob verstopfte Toilette, überlaufendes Waschbecken oder Wasserschaden – wir sind rund um die Uhr für Sie da und helfen sofort weiter.</p>
+            <div class="cta-buttons">
+                <a href="tel:01609631694" class="cta-button primary">
+                    <i class="fas fa-phone-alt"></i>
+                    Jetzt anrufen
+                </a>
+                <a href="#contact" class="cta-button secondary">
+                    <i class="fas fa-envelope"></i>
+                    Kontakt aufnehmen
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-column footer-about">
+                    <h3>Über uns</h3>
+                    <p>Abflussnotdienst24-7 ist Ihr zuverlässiger Partner für alle Abfluss- und Sanitärprobleme in Dinkelsbühl und Umgebung. Als Meisterbetrieb bieten wir schnelle Hilfe rund um die Uhr, an 365 Tagen im Jahr.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column footer-links">
+                    <h3>Schnellzugriff</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Startseite</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Leistungen</a></li>
+                        <li><a href="#team"><i class="fas fa-chevron-right"></i> Team</a></li>
+                        <li><a href="#location"><i class="fas fa-chevron-right"></i> Einsatzgebiet</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Kontakt</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column footer-links">
+                    <h3>Unsere Leistungen</h3>
+                    <ul>
+                        <li><a href="#notdienst"><i class="fas fa-chevron-right"></i> 24/7 Notdienst</a></li>
+                        <li><a href="#rohrreinigung"><i class="fas fa-chevron-right"></i> Rohrreinigung</a></li>
+                        <li><a href="#sanitaer"><i class="fas fa-chevron-right"></i> Sanitärinstallation</a></li>
+                        <li><a href="#kamera"><i class="fas fa-chevron-right"></i> Kamera-Inspektion</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column footer-contact">
+                    <h3>Kontakt</h3>
+                    <p><i class="fas fa-phone"></i> <a href="tel:01609631694">0160 963 169 41</a></p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:015170595731">0151 705 957 31</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:samete@web.de">samete@web.de</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Dinkelsbühl und Umgebung</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-left">
+                    &copy; 2025 Abflussnotdienst24-7 | Alle Rechte vorbehalten
+                </div>
+                <div class="footer-bottom-right">
+                    <a href="#">Impressum</a>
+                    <a href="#">Datenschutz</a>
+                    <a href="#">AGB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const darkModeIcon = '<i class="fas fa-sun"></i>';
+        const lightModeIcon = '<i class="fas fa-moon"></i>';
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            themeToggle.innerHTML = document.body.classList.contains('dark-mode') ? darkModeIcon : lightModeIcon;
+        });
+        
+        // Navbar Scroll
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Service Tabs
+        const serviceTabs = document.querySelectorAll('.service-tab');
+        const serviceContents = document.querySelectorAll('.service-content');
+        
+        serviceTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                serviceTabs.forEach(t => t.classList.remove('active'));
+                serviceContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const serviceId = tab.getAttribute('data-service');
+                document.getElementById(serviceId).classList.add('active');
+            });
+        });
+        
+        // Reveal Elements on Scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        function reveal() {
+            for (let i = 0; i < revealElements.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = revealElements[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    revealElements[i].classList.add('active');
+                }
+            }
+        }
+        
+        window.addEventListener('scroll', reveal);
+        reveal(); // Call once on page load
+        
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would normally send the form data to your server
+            alert('Vielen Dank für Ihre Nachricht! Wir werden uns schnellstmöglich bei Ihnen melden.');
+            contactForm.reset();
+        });
+        
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (!targetElement) return;
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Parallax Effect for Bubbles
+        const bubbles = document.querySelectorAll('.bubble');
+        
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            
+            bubbles.forEach((bubble, index) => {
+                const speed = 0.2 + (index * 0.1);
+                bubble.style.transform = `translateY(${scrollY * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
